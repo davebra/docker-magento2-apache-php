@@ -7,7 +7,7 @@ RUN apt-get update \
     libicu-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
-    libpng12-dev \
+    libpng-dev \
     libxslt1-dev \
     git \
     vim \
@@ -22,14 +22,16 @@ RUN docker-php-ext-configure \
     gd \
     intl \
     mbstring \
-    bcmath \
-    mcrypt \
     pdo_mysql \
     xsl \
     zip \
     opcache \
     bcmath \
     soap
+  
+RUN pecl install mcrypt-1.0.2
+
+RUN docker-php-ext-enable mcrypt
 
 ADD https://raw.githubusercontent.com/colinmollenhour/credis/master/Client.php /credis.php
 ADD php.ini /usr/local/etc/php/conf.d/888-fballiano.ini
