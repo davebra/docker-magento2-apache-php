@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 MAINTAINER Fabrizio Balliano <fabrizio@fabrizioballiano.com>
 
 RUN apt-get update \
@@ -22,6 +22,7 @@ RUN docker-php-ext-configure \
     gd \
     intl \
     mbstring \
+    bcmath \
     mcrypt \
     pdo_mysql \
     xsl \
